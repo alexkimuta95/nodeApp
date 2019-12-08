@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        title Index Pug page
+        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        nav(class="navbar navbar-expand-md navbar-dark bg-dark")
+            a.navbar-brand(href='/') NodeApp
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarsExampleDefault.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Home  
+                    if user
+                        li.nav-item
+                            a.nav-link(href='/articles/add') Add Article 
+                ul.navbar-nav.navbar-right
+                    if user 
+                        li 
+                            a(href="/users/logout") Logout
+                    else
+                        li
+                            a.nav-link(href="/users/register") Register
+                        li
+                            a.nav-link(href="/users/login") Login
+
+    .container
+        != messages('message',locals)
+        block content
+        br
+        hr
+        footer
+            p Copyright &copy; 2019
+    script(src="/bower_components/jquery/dist/jquery.js")
+    script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+    script(src="/js/main.js")
